@@ -6,13 +6,13 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Item;
 use Illuminate\Http\Request;
 
-class entryController extends Controller
+class AddItemController extends Controller
 {
     public function index(){
         return view('addentry');
     }
 
-
+    //add item form
     public function store(Item $item)
     {
 
@@ -29,7 +29,7 @@ class entryController extends Controller
     protected function validateItem(): array
     {
 
-        //privalomi laukeliai
+        //must fill
         return request()->validate([
             'name' => 'required',
             'phone' => 'required',

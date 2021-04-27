@@ -74,7 +74,7 @@
                 </select>
             <hr>
             <h4>User select</h4>
-                <select name="sharer" id="" class="form control input-sm">
+                <select name="receiver" id="" class="form control input-sm">
                     @foreach($sharable_users as $user)
                 <option value="{{$user->id}}">{{$user->name}} {{$user->email}}</option>
                     @endforeach
@@ -128,35 +128,4 @@
     </table>
   </div>
   @endsection
-
-
-
-{{-- @foreach($items as $item)
-
-<p>Username:
-<span>{{$item->name}}</span>
-</p>
-<p>
-Phone number:
-<span>{{$item->phone}}</span>
-@if(auth()->id() === $item->user_id)
-    <form method="POST" action="{{route('deleteitem', $item)}}">
-        @method('DELETE')
-        @csrf
-        <form>
-            <button type="submit" class="btn btn-primary">Delete</button>
-        </form>
-    </form>
-    <form action="{{route('itemedit', $item)}}">
-        @csrf
-        <form>
-            <button type="submit" class="btn btn-primary">Edit</button>
-        </form>
-    </form>
-<br>
-@endif
-</p>
-<br>
-
-@endforeach --}}
 

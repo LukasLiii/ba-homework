@@ -9,22 +9,23 @@ use App\Models\item_shares;
 use App\Models\item;
 use App\Validators\ItemShareRequestValidator;
 
-class shareditemsController extends Controller
+class SharedItemsController extends Controller
 {
 
     public function index() {
-
+        //join two tables in /shareditems to get needed info from both tables
         $shared_items = item::join('item_shares', 'item_shares.item_id', '=', 'items.id')->where('item_shares.receiver_id', '=', auth()->id())->get();
         return view('/shareditems', compact('shared_items'));
 
     }
 
+    //create new shared item
     public function store(Request $request)
     {
         $share = new item_shares;
         $share->item_id = $request->input('item');
         $share->sharer_id = auth()->id();
-        $share->receiver_id = $request->input('sharer');
+        $share->receiver_id = $request->input('receiver');
 
         $share->save();
 
@@ -32,6 +33,7 @@ class shareditemsController extends Controller
 
     }
 
+    //delete shared item
     public function delete(item_shares $shared_item)
     {
             $sharedelete = item_shares::find($shared_item->id);

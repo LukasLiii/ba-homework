@@ -19,16 +19,16 @@ Route::get('/', function () {
 });
 
 
-Route::get('/addentry', 'App\Http\Controllers\entryController@index')->middleware('auth');
-Route::post('/addentry', 'App\Http\Controllers\entryController@store');
-Route::get('/allitems', 'App\Http\Controllers\AllitemsController@index')->middleware('auth');
-Route::get('/allitems/{item}/edit', 'App\Http\Controllers\AllitemsController@edit')->name('itemedit');
-Route::put('/allitems/{item}/update', 'App\Http\Controllers\AllitemsController@update')->name('item_update');
-Route::delete('/allitems/{item}/delete', 'App\Http\Controllers\AllitemsController@delete')->name('deleteitem');
-Route::post('/share', 'App\Http\Controllers\shareditemsController@store')->name('share');
-Route::get('/shared_items', 'App\Http\Controllers\shareditemsController@index')->name('shared_items');
-Route::get('/shareditems', 'App\Http\Controllers\shareditemsController@index');
-Route::delete('/shareditems/{shared_item}/delete', 'App\Http\Controllers\shareditemsController@delete')->name('deleteshare');
+Route::get('/addentry', 'App\Http\Controllers\AddItemController@index')->middleware('auth');
+Route::post('/addentry', 'App\Http\Controllers\AddItemController@store');
+Route::get('/allitems', 'App\Http\Controllers\AllItemsController@index')->middleware('auth');
+Route::get('/allitems/{item}/edit', 'App\Http\Controllers\AllItemsController@edit')->name('itemedit');
+Route::put('/allitems/{item}/update', 'App\Http\Controllers\AllItemsController@update')->name('item_update');
+Route::delete('/allitems/{item}/delete', 'App\Http\Controllers\AllItemsController@delete')->name('deleteitem');
+Route::post('/share', 'App\Http\Controllers\SharedItemsController@store')->name('share');
+Route::get('/shared_items', 'App\Http\Controllers\SharedItemsController@index')->name('shared_items');
+Route::get('/shareditems', 'App\Http\Controllers\SharedItemsController@index')->middleware('auth');
+Route::delete('/shareditems/{shared_item}/delete', 'App\Http\Controllers\SharedItemsController@delete')->name('deleteshare');
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 Auth::routes();

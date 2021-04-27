@@ -8,7 +8,7 @@ use App\Models\item_shares;
 use App\Models\User;
 use Exception;
 
-class AllitemsController extends Controller
+class AllItemsController extends Controller
 {
     public function index()
     {
@@ -22,6 +22,7 @@ class AllitemsController extends Controller
         return view('allitems', compact('items', 'users', 'sharable_items', 'sharable_users', 'my_shared_items'));
     }
 
+    //edit selected item
     public function edit(Item $item)
     {
         $itemedit = Item::find($item->id);
@@ -29,6 +30,7 @@ class AllitemsController extends Controller
         return view('entryedit', compact('itemedit'));
     }
 
+    //update selected item
     public function update(Item $item, Request $request)
     {
 
@@ -40,6 +42,7 @@ class AllitemsController extends Controller
         return redirect('allitems');
     }
 
+    //delete selected item
     public function delete(Item $item)
     {
         $itemdelete = Item::find($item->id);
