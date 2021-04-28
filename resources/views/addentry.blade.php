@@ -32,7 +32,9 @@
                 <span> Format: xxx-xx-xxx </span>
             </div>
         </div>
-        <input type="submit" style="margin-left: 1870px">
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary">Create</button>
+        </div>
     </form>
 
 
