@@ -22,13 +22,13 @@ Route::get('/', function () {
 Route::get('/addentry', 'App\Http\Controllers\AddItemController@index')->middleware('auth');
 Route::post('/addentry', 'App\Http\Controllers\AddItemController@store');
 Route::get('/allitems', 'App\Http\Controllers\AllItemsController@index')->middleware('auth');
-Route::get('/allitems/{item}/edit', 'App\Http\Controllers\AllItemsController@edit')->name('itemedit');
-Route::put('/allitems/{item}/update', 'App\Http\Controllers\AllItemsController@update')->name('item_update');
-Route::delete('/allitems/{item}/delete', 'App\Http\Controllers\AllItemsController@delete')->name('deleteitem');
+Route::get('/allitems/{item}/edit', 'App\Http\Controllers\AllItemsController@edit')->name('itemEdit');
+Route::put('/allitems/{item}/update', 'App\Http\Controllers\AllItemsController@update')->name('itemUpdate');
+Route::get('/allitems/{item}/delete', 'App\Http\Controllers\AllItemsController@delete')->name('deleteItem');
 Route::post('/share', 'App\Http\Controllers\SharedItemsController@store')->name('share');
-Route::get('/shared_items', 'App\Http\Controllers\SharedItemsController@index')->name('shared_items');
+Route::get('/shared_items', 'App\Http\Controllers\SharedItemsController@index')->middleware('auth');
 Route::get('/shareditems', 'App\Http\Controllers\SharedItemsController@index')->middleware('auth');
-Route::delete('/shareditems/{shared_item}/delete', 'App\Http\Controllers\SharedItemsController@delete')->name('deleteshare');
+Route::get('/shareditems/{shared_item}/delete', 'App\Http\Controllers\SharedItemsController@delete')->name('deleteShare');
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 Auth::routes();

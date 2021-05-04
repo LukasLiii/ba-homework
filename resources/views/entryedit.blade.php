@@ -13,7 +13,7 @@
 
 </head>
 <body>
-  <form method="POST" action="{{route('item_update', $itemedit)}}" enctype="multipart/form-data" id="editform">
+  <form method="POST" action="{{route('itemUpdate', $itemEdit)}}" enctype="multipart/form-data" id="editform">
     @csrf
     @method('PUT')
     <div class="row page-content justify-content-center">
@@ -22,7 +22,7 @@
         <label for="name" class="col-md-4 col-form-label text-md-right">Username</label>
 
             <div class="col-md-6">
-                <input id="name" type="name" class="form-control" name="name" value="{{$itemedit->name}}" required>
+                <input id="name" type="name" class="form-control" name="name" value="{{$itemEdit->name}}" required>
             </div>
         </div>
 
@@ -30,7 +30,7 @@
             <label for="phone" class="col-md-4 col-form-label text-md-right">Phone number</label>
 
                 <div class="col-md-6">
-                    <input id="phone" type="tel" class="form-control" name="phone" placeholder="123-45-678" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"  value="{{$itemedit->phone}}" required>
+                    <input id="phone" type="tel" class="form-control" name="phone" placeholder="123-45-678" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"  value="{{$itemEdit->phone}}" required>
                     <span> Format: xxx-xx-xxx </span>
                 </div>
         </div>

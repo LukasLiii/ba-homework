@@ -19,13 +19,13 @@
         </tr>
       </thead>
       <tbody>
-        @foreach($shared_items as $shared_item)
+        @foreach($sharedItems as $sharedItem)
             <tr>
-                <td>{{$shared_item->name}}</td>
-                <td>{{$shared_item->phone}}</td>
-                <td>{{$shared_item->item_id}}</td>
-                <td>{{$shared_item->sharer_id}}</td>
-                <td>{{$shared_item->receiver_id}}</td>
+                <td>{{$sharedItem->name}}</td>
+                <td>{{$sharedItem->phone}}</td>
+                <td>{{$sharedItem->item_id}}</td>
+                <td>{{$sharedItem->sharer_id}}</td>
+                <td>{{$sharedItem->receiver_id}}</td>
             </tr>
         @endforeach
       </tbody>

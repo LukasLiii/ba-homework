@@ -21,19 +21,11 @@
             <td>{{$item->name}}</td>
             <td>{{$item->phone}}</td>
             <td>@if(auth()->id() === $item->user_id)
-                <form method="POST" action="{{route('deleteitem', $item)}}">
-                    @method('DELETE')
-                    @csrf
-                <form>
-                    <button type="submit" class="btn btn-primary">Delete</button>
-                </form>
-                </form>
+                <a href="{{route('deleteItem', $item)}}" class="btn btn-primary">Delete</a>
             <br>
-                <form action="{{route('itemedit', $item)}}">
+                <form action="{{route('itemEdit', $item)}}">
                     @csrf
-                <form>
                     <button type="submit" class="btn btn-primary">Edit</button>
-                </form>
                 </form>
                 @endif </td>
         </tr>
@@ -68,14 +60,14 @@
 
             <h4>Item select</h4>
                 <select name="item" id="item" class="form control input-sm">
-                    @foreach($sharable_items as $item)
+                    @foreach($sharableItems as $item)
                 <option value="{{$item->id}}">{{$item->name}} {{$item->phone}}</option>
                     @endforeach
                 </select>
             <hr>
             <h4>User select</h4>
                 <select name="receiver" id="" class="form control input-sm">
-                    @foreach($sharable_users as $user)
+                    @foreach($sharableUsers as $user)
                 <option value="{{$user->id}}">{{$user->name}} {{$user->email}}</option>
                     @endforeach
                 </select>
@@ -105,19 +97,18 @@
         </tr>
       </thead>
       <tbody>
-        @foreach($my_shared_items as $my_shared_item)
+        @foreach($mySharedItems as $mySharedItem)
         <tr>
-        <td>{{App\Models\Item::where('id',$my_shared_item->item_id)->value('name')}}</td>
-        <td>{{App\Models\Item::where('id',$my_shared_item->item_id)->value('phone')}}</td>
-        <td>{{App\Models\User::where('id',$my_shared_item->receiver_id)->value('name')}}</td>
+        <td>{{App\Models\Item::where('id',$mySharedItem->item_id)->value('name')}}</td>
+        <td>{{App\Models\Item::where('id',$mySharedItem->item_id)->value('phone')}}</td>
+        <td>{{App\Models\User::where('id',$mySharedItem->receiver_id)->value('name')}}</td>
         <td>
-            <form method="POST" action="{{route('deleteshare', $my_shared_item)}}">
-                @method('DELETE')
-                @csrf
-                <form>
+            <a href="{{route('deleteShare', $mySharedItem)}}" class="btn btn-primary">Delete</a>
+            {{-- <form method="POST" action="{{route('deleteshare', $my_shared_item)}}">
+                @method('DELETE') --}}
+                {{-- @csrf
                     <button type="submit" class="btn btn-primary">Delete</button>
-                </form>
-            </form>
+            </form> --}}
         <br>
         </td>
         </tr>
